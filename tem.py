@@ -1,10 +1,28 @@
-from datetime import datetime
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import QPixmap
 
-# Get the current date and time
-current_datetime = datetime.now()
+class Show_Ticket(QDialog):
+    def __init__(self):
+        super().__init__()
 
-# Extract the date from the datetime object
-current_date = current_datetime.date()
+        # Create a QLabel to display the ticket image
+        label = QLabel(self)
 
-# Print the current date
-print("Current Date:", type(current_date))
+        # Load the ticket image using QPixmap
+        pixmap = QPixmap('Ticket.png')
+
+        # Set the pixmap to the label
+        label.setPixmap(pixmap)
+
+        # Set the size and position of the label based on the image size
+        label.setGeometry(0, 0, pixmap.width(), pixmap.height())
+
+        # Create a layout to manage the positioning of the label
+        layout = QVBoxLayout(self)
+        layout.addWidget(label)
+        self.setLayout(layout)
+
+# Example usage:
+# app = QApplication([])
+# window = Show_Ticket()
+# window.exec_()
